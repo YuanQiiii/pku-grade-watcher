@@ -115,23 +115,32 @@ class Session(requests.Session):
             with open("current.json", "r", encoding="utf-8") as f:
                 new_data = json.load(f)
 
-            # 读取旧数据，若不存在则初始化空数据
+            # 读取旧数据
             with open("data.json", "r", encoding="utf-8") as f:
                 old_data = json.load(f)
 
             # 提取所有旧课程ID
-            old_ids = set()
+            old_courses = {}
             for term in old_data.get("cjxx", []):
                 for course in term.get("list", []):
                     if "bkcjbh" in course:
-                        old_ids.add(course["bkcjbh"])
+                        old_courses[course["bkcjbh"]] = course
 
             # 收集新增课程信息
             new_courses = []
+            
+            # 记录一些调试信息
+            total_courses = 0
+            
             for term in new_data.get("cjxx", []):
                 for course in term.get("list", []):
+                    total_courses += 1
                     cid = course.get("bkcjbh")
-                    if cid and cid not in old_ids:
+                    if not cid:
+                        continue
+                        
+                    # 如果课程ID不在旧数据中，或者成绩有变化，则视为更新
+                    if cid not in old_courses:
                         new_courses.append(
                             {
                                 "name": course.get("kcmc", "无"),
@@ -139,7 +148,13 @@ class Session(requests.Session):
                                 "gpa": course.get("jd", "无"),
                             }
                         )
-
+            
+            print(f"{'[Debug]':<15}: 总课程数: {total_courses}, 新增课程数: {len(new_courses)}")
+            
+            # 先备份旧数据，以防出错
+            if os.path.exists("data.json"):
+                os.rename("data.json", "data.json.bak")
+                
             # 更新本地数据文件
             with open("data.json", "w", encoding="utf-8") as f:
                 json.dump(new_data, f, ensure_ascii=False, indent=4)
@@ -156,7 +171,10 @@ class Session(requests.Session):
             return new_courses
 
         except Exception as e:
-            print(f"检查更新时出错: {e}")
+            print(f"{'[Error]':<15}: 检查更新时出错: {e}")
+            # 如果出错且备份存在，恢复备份
+            if os.path.exists("data.json.bak"):
+                os.rename("data.json.bak", "data.json")
             return []
 
 
