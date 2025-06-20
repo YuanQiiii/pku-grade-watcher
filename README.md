@@ -233,6 +233,13 @@ pku-grade-watcher/
    - 检查 crontab 配置是否正确
    - 确认脚本路径和 Python 路径
    - 查看系统日志和程序日志
+  
+4. **log内容为无权限**
+   - 使用下面的脚本赋予你的脚本执行权限
+```bash
+     chmod +x check.sh
+```
+ 
 
 ### 调试方法
 
