@@ -236,10 +236,10 @@ pku-grade-watcher/
   
 4. **log内容为无权限**
    - 使用下面的脚本赋予你的脚本执行权限
+
 ```bash
      chmod +x check.sh
 ```
- 
 
 ### 调试方法
 
