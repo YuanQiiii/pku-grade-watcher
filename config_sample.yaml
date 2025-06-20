@@ -1,3 +1,36 @@
-username: 2100000000
-password: 123456
+# 北大成绩监控配置文件
+
+# 登录信息（必需）
+username: 2100000000  # 学号
+password: 123456      # 密码
+
+# 数据文件路径（可选，默认为 course_data.json）
+data_file: course_data.json
+
+# 通知配置
+# 支持的通知类型：bark, email, console, multi
+
+# 方式1: 只使用 Bark 推送（简单配置）
 bark: 'ro7cwEn6bbbg9ffo'
+
+# 方式2: 只使用邮件通知
+# type: email
+# smtp_server: smtp.qq.com
+# smtp_port: 587
+# email_username: your_email@qq.com
+# email_password: your_app_password
+# from_email: your_email@qq.com
+# to_email: target@example.com
+
+# 方式3: 同时使用多种通知方式
+# type: multi
+# bark: 'ro7cwEn6bbbg9ffo'
+# smtp_server: smtp.qq.com
+# smtp_port: 587
+# email_username: your_email@qq.com
+# email_password: your_app_password
+# from_email: your_email@qq.com
+# to_email: target@example.com
+
+# 方式4: 控制台输出（用于测试）
+# type: console
