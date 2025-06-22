@@ -2,6 +2,10 @@
 
 🎓 一个自动监控北京大学学生成绩变化并发送通知的 Python 工具。
 
+- forked from zhuozhiyongde/pku-grade-watcher
+- 如果觉得项目有帮到你，请给原作者点点star。
+- 主要改进是原本的项目基础上增加了邮箱通知渠道，解决了自部署情形下周期性出现的异常行为，并为之后的拓展设计了基类。
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.7+-green.svg)
 
@@ -248,16 +252,6 @@ pku-grade-watcher/
 3. **配置验证**: 使用控制台输出模式测试配置
 4. **逐步调试**: 逐一测试登录、获取数据、通知等功能
 
-## 📝 更新日志
-
-### v1.0.0
-
-- ✨ 初始版本发布
-- 🎯 支持北大教务系统成绩监控
-- 📱 支持 Bark 推送和邮件通知
-- 🔄 实现课程去重和增量更新
-- ⏰ 支持定时任务运行
-
 ## 🤝 贡献指南
 
 欢迎提交 Issue 和 Pull Request！
@@ -278,15 +272,3 @@ pku-grade-watcher/
 - 请遵守学校相关规定，合理使用教务系统
 - 使用本工具产生的任何问题，作者不承担责任
 - 请保护好个人账号信息，注意网络安全
-
-## 📞 联系方式
-
-如有问题或建议，请通过以下方式联系：
-
-- 📧 提交 Issue
-- 💬 发起 Discussion
-- 🔗 关注项目更新
-
----
-
-⭐ 如果这个项目对您有帮助，请给个 Star！
