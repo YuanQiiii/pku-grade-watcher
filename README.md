@@ -4,7 +4,7 @@
 
 - forked from zhuozhiyongde/pku-grade-watcher
 - 如果觉得项目有帮到你，请给原作者点点star。
-- 主要改进是原本的项目基础上增加了邮箱通知渠道，解决了自部署情形下周期性出现的异常行为，并为之后的拓展设计了基类。
+- 主要改进是在原项目基础上增加了邮箱通知渠道，解决了自部署情形下周期性出现的异常行为，并为之后的拓展设计了基类。
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.7+-green.svg)
