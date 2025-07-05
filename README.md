@@ -252,6 +252,23 @@ pku-grade-watcher/
 3. **配置验证**: 使用控制台输出模式测试配置
 4. **逐步调试**: 逐一测试登录、获取数据、通知等功能
 
+## 常见问题
+### SSLError(SSLEOFError) 异常
+
+表现：Python 程序通过代理访问特定 HTTPS 网站时，因 SSL/TLS 握手失败而被服务器切断连接，导致 SSLEOFError。
+
+根本原因：执行该程序的 Python 环境中，负责加密通信的底层库过时或不完整。
+
+解决方法：使用 pip 更新相关的 SSL/TLS 和 HTTPS 客户端库 (pyopenssl, pyasn1, ndg-httpsclient)，升级客户端的“加密引擎”。
+
+```bash
+pip install ndg-httpsclient
+
+pip install pyopenssl
+
+pip install pyasn1
+```
+
 ## 🤝 贡献指南
 
 欢迎提交 Issue 和 Pull Request！
